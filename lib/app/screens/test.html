@@ -1,0 +1,89 @@
+1. Define Clear Architecture and Document Internal Best Practices 📃 One of the
+most important things is bringing all the team members on the same page.
+Especially when onboarding new team members, questions like these might pop up:
+“I need to update the design system, where in code should I do it?” “How do we
+handle API errors on the business logic layer?” “Do we have best practices for
+conditional rendering of Widgets?” “What kind of tests should I write for this
+feature?” Ideally most of the questions should be answered by your thorough
+documentation of the architecture and best practices in your team. However, If
+your team is still in a phase without strictly set best-practices and lacking
+documentation, I highly encourage you to try the following: Set up a meeting
+with your dev team where you discuss all the different parts of the app — from
+state management to widgets and above. Analyze, research and finally define the
+first set of guidelines (in written form) which you think would eliminate most
+of the insecurities & questions that keep appearing within your team. Try to put
+the first iteration of guidelines into practice (e.g. in your next sprint).
+After a while observe the results and talk again with your team about the parts
+that were useful but also try to find the parts which were too loosely defined
+or incomplete. Continuously iterate the documentation as necessary. Also, don’t
+forget to iterate (refactor) the parts of code which are problematic in the
+first place and for which no amount of documentation would shed enough light on.
+Consistency is key. And consistency comes with guidelines. Find and define your
+standard best-practices, which will help your team to be confident about the ins
+and outs of your codebase. TIP: You can use free tools such as Notion to
+document these best-practice s. I am also a huge fan of architectural diagrams —
+presenting the architectural parts in a easy-to-digest visual format. One of the
+nice free visual tools that you could use for diagrams is Figma/FigJam. 2.
+Separate Business and UI Logic From my experience — this one is a must. I dare
+to say that it’s almost impossible to keep widgets clean if you intertwine
+Business & UI logic. If business logic is laying around in your widgets and your
+app is growing → it’s time to find a state management solution! :) Benefits of
+Separation: makes it easy to test both UI & business logic layers separately
+much easier refactoring faster debugging faster implementation of new features
+Based on my personal experience, I can highly recommend the BLOC state
+management package. It’s mature and flexible enough so it’s suitable for almost
+every use-case. If you’re afraid of the possible boilerplate code (that you’ve
+heard about) which comes with BLOC → you can read Flutter: BLOCs at Scale | 2 —
+Keeping BLOCs Lean, where I discuss how you can utilize concepts like reusable
+BLOCs, which will lower the amount of boilerplate. If your app doesn’t need all
+the possibilities of BLOC, you can use Cubit (included in the same package). 3.
+Limit Widget’s Render Function to ~60 Lines of Code Your team will have large
+problems if your widgets are a giant pile of code. The limit of ~60 Lines of
+Code is just my favorite personal guideline which forced me and my team to keep
+widgets well structured and clear. Thanks to the extraordinary designer Sabina
+Mowich (https://www.behance.net/gallery/131947637/Mobile-Banking-UI-design) for
+allowing me to use her design 🎨 The above image shows an example of how we
+could structure our widgets on the screen-level while keeping the amount of code
+minimal. Logically dividing the UI into multiple sub-sections and sub-widgets
+helps us achieve a clear and well maintainable set of UI code. Still curious why
+the widget’s size can become such a big problem? code reviewing only one widget
+with 300+ lines of code will probably “mentally exhaust” the reviewer to such a
+degree, that he might easily forget about his deep-work session afterwards.
+implementing simple UI design changes becomes cumbersome, when you’re 5 minutes
+straight searching for the right piece of code that needs your edits. it
+discourages reusability of widgets and promotes code duplication. TIP: Having
+multiple smaller widgets is much better than having a single large one. Also,
+use class widgets instead of functions (for performance reasons). NOTE: If you
+are curious how to write clean widgets and keep your UI code structured, be sure
+to press the follow button on my profile. I will be soon covering that topic
+in-depth. 4. Create API Wrappers around Packages When you read a package’s
+documentation, it usually shows the direct usage of the package’s API. This
+confuses especially less experienced devs by making them think that polluting
+the codebase with direct calls of a package’s function in random places is good
+practice. Except that it usually isn’t — here’s why: imagine you want to replace
+the package with a similar one — now you need to refactor all the calls across
+your whole codebase → a very mundane & bug prone process. through time packages
+are subject to breaking changes, which means that we need to change them all
+across the code (similar issues as in the above point). makes it more difficult
+to write tests. Instead you should opt for wrapping service classes, which are
+flexible and easy to maintain. Example: Let’s assume we want to implement
+analytics in our app. After installing the analytics package of our choice (e.g.
+firebase_analytics), let’s create a AnalyticsService wrapper service class. This
+way we can define our own API and stay flexible in regards to future package
+changes. This class could look something like this: A comparison of the direct
+usage of the package VS usage of the service class: TIP: Loose coupling delivers
+obvious benefits in flexibility and extensibility. The caveat of slight overhead
+(which is boilerplate code) is irrelevant compared to long-term benefits. 5.
+Automate CI/CD Last but not least — setting up the CI/CD pipeline. It’s very
+important to have a nice “implement-test-merge-deploy-release” pipeline set up.
+While every pipeline might look a little bit different, they all have in common
+that when one is put into practice it saves you hours of manual work each week.
+My current favorite combination of CI/CD tools for Flutter is Github Actions +
+Fastlane. This combo enables you to easily design workflows that can run on
+different branches under different conditions. Example: when you merge a PR
+development <-- feature branch, you can run dart analyzer / linter, tests,
+generate docs, etc. when you merge a PR main <-- development branch, you can run
+all the steps above, increments build/version number + run fastlane which builds
+the release and deploys an internal release to both Google Play Store and App
+Store. All this can finally happen without the pain of doing lots of manual
+steps under a tight deadline (on a Friday evening). Enjoy your beer 🍺🌞

@@ -1,0 +1,8 @@
+This package supports most common HTML tags for easy usage. If you don't want to include all of its dependencies in your build, it's possible to use flutter_widget_from_html_core with a subset of the mixins to control your app size:
+
+    fwfh_cached_network_image for optimized image rendering
+    fwfh_chewie for VIDEO support
+    fwfh_just_audio for AUDIO support
+    fwfh_svg for SVG support
+    fwfh_url_launcher to launch URLs
+    fwfh_webview for IFRAME support
