@@ -1,16 +1,30 @@
-# iconify
+# 🛍️ Study Ease
 
-A new Flutter project.
+**Myth Store** is a modern and elegant note taking application built with **Flutter**. Designed for
+speed, style, and scalability.
 
-## Getting Started
+## 📸 Previews
 
-This project is a starting point for a Flutter application.
+![Landing Page](https://github.com/sailinhtut/iconify/blob/main/preview/1.jpg)
+![Landing Page](https://github.com/sailinhtut/iconify/blob/main/preview/2.jpg)
+![Landing Page](https://github.com/sailinhtut/iconify/blob/main/preview/3.jpg)
+![Landing Page](https://github.com/sailinhtut/iconify/blob/main/preview/4.jpg)
+![Landing Page](https://github.com/sailinhtut/iconify/blob/main/preview/5.jpg)
+![Landing Page](https://github.com/sailinhtut/iconify/blob/main/preview/6.jpg)
+![Landing Page](https://github.com/sailinhtut/iconify/blob/main/preview/7.jpg)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🚀 Getting Started
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+To run and develop.
+
+```bash
+git clone https://github.com/sailinhtut/study-ease.git
+flutter run
+```
+
+To build production web bundle (HTML, CSS, JavaScript).
+
+```bash
+flutter build
+```
